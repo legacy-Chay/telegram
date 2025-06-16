@@ -7,9 +7,9 @@ local encoding = require('encoding')
 encoding.default = 'CP1251'
 u8 = encoding.UTF8
 
--- Заменены на фиксированные значения
-local chatID = '1239573440'
-local token = '7830573550:AAE-39gSXUwUgUJC7xpt8DrXeQBm2S0VTt0'
+-- Г‡Г Г¬ГҐГ­ГҐГ­Г» Г­Г  ГґГЁГЄГ±ГЁГ°Г®ГўГ Г­Г­Г»ГҐ Г§Г­Г Г·ГҐГ­ГЁГї
+local chatID = 'С‡Р°С‚ РёРґ '
+local token = 'С‚РѕРєРµРЅ'
 
 local effilTelegramSendMessage = effil.thread(function(text)
     local requests = require('requests')
@@ -29,18 +29,18 @@ function url_encode(text)
 end
 
 function sendTelegramMessage(text)
-    local text = text:gsub('{......}', '') -- убрать цветовые коды
+    local text = text:gsub('{......}', '') -- ГіГЎГ°Г ГІГј Г¶ГўГҐГІГ®ГўГ»ГҐ ГЄГ®Г¤Г»
     effilTelegramSendMessage(url_encode(u8(text)))
 end
 
 function main()
     while not isSampAvailable() do wait(0) end
-    sampAddChatMessage('[telegram] {ffffff}Скрипт активен. Ожидаем сообщения в чате...', 0x3083ff)
+    sampAddChatMessage('[telegram] {ffffff}Г‘ГЄГ°ГЁГЇГІ Г ГЄГІГЁГўГҐГ­. ГЋГ¦ГЁГ¤Г ГҐГ¬ Г±Г®Г®ГЎГ№ГҐГ­ГЁГї Гў Г·Г ГІГҐ...', 0x3083ff)
     wait(-1)
 end
 
 function samp.onServerMessage(color, text)
-    if text:lower():find('строй') then
-        sendTelegramMessage('В чате обнаружено сообщение: ' .. text)
+    if text:lower():find('Г±ГІГ°Г®Г©') then
+        sendTelegramMessage('Г‚ Г·Г ГІГҐ Г®ГЎГ­Г Г°ГіГ¦ГҐГ­Г® Г±Г®Г®ГЎГ№ГҐГ­ГЁГҐ: ' .. text)
     end
 end
